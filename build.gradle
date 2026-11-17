@@ -1,0 +1,2 @@
+plugins { id 'taack-grails-assets-plugin' }
+grails { plugins { implementation project(':PM_module_server-admin'); implementation project(':crew') } }
