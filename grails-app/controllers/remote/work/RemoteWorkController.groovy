@@ -104,7 +104,7 @@ class RemoteWorkController {
             Map config = [remoteWork:true, scriptId:script.id, jobDescription:description,
                           scriptOptions:parseOptions(script, upload)]
             job = serverJobService.submit(script.jobType, username(), config, 'JOB_RESULTS')
-            String filename = serverJobPackageService.store(upload, job.id as Long)
+            String filename = serverJobPackageService.store(upload, job.id as Long, config)
             serverJobService.setPackageFileName(job.id as Long, filename)
             flash.message = 'Job queued: ' + job.id
         } catch (Exception ex) {

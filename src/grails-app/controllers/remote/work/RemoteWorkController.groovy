@@ -98,7 +98,7 @@ class RemoteWorkController {
                           scriptOptions:parseOptions(script, upload),
                           inputFile:inputFile, outputPrefix:prefix]
             job = serverJobService.submit(script.jobType, username(), config, 'JOB_RESULTS')
-            String filename = serverJobPackageService.store(upload, job.id as Long)
+            String filename = serverJobPackageService.store(upload, job.id as Long, config)
             serverJobService.setPackageFileName(job.id as Long, filename)
             flash.message = 'Job queued: ' + job.id
         } catch (Exception ex) {
